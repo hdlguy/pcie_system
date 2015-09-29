@@ -3,7 +3,9 @@
 file delete -force proj.xpr *.os *.jou *.log implement/* proj.srcs proj.cache proj.runs
 #exec find ../source/ip ! -name "*.zip" -type f -delete
 #
-create_project -part xc7k325tffg900-2 -force proj 
+create_project -force proj 
+#set_property board_part xilinx.com:kc705:part0:1.1 [current_project]
+set_property board_part xilinx.com:vc709:part0:1.5 [current_project]
 set_property target_language VHDL [current_project]
 set_property default_lib work [current_project]
 load_features ipintegrator

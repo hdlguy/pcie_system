@@ -6,10 +6,10 @@ use UNISIM.VCOMPONENTS.ALL;
 
 entity top is
 port (
-    pcie_7x_mgt_rxn : in    STD_LOGIC_VECTOR ( 0 to 0 );
-    pcie_7x_mgt_rxp : in    STD_LOGIC_VECTOR ( 0 to 0 );
-    pcie_7x_mgt_txn : out   STD_LOGIC_VECTOR ( 0 to 0 );
-    pcie_7x_mgt_txp : out   STD_LOGIC_VECTOR ( 0 to 0 );
+    pcie_7x_mgt_rxn : in    STD_LOGIC;
+    pcie_7x_mgt_rxp : in    STD_LOGIC;
+    pcie_7x_mgt_txn : out   STD_LOGIC;
+    pcie_7x_mgt_txp : out   STD_LOGIC;
     pcie_perstn     : in    STD_LOGIC;
     pcie_refclk_N   : in    STD_LOGIC;
     pcie_refclk_P   : in    STD_LOGIC;
@@ -92,54 +92,52 @@ begin
     slv_read14 <= (others=>'0');
     slv_read15 <= (others=>'0');
 
-    system_inst: entity work.system
+
+    system_i: entity work. system
     port map (
+        axi_clk => axi_clk,
+        axi_reset_n(0) => axi_reset_n,
         cpu_reset => cpu_reset,
-        pcie_7x_mgt_rxn(0) => pcie_7x_mgt_rxn(0),
-        pcie_7x_mgt_rxp(0) => pcie_7x_mgt_rxp(0),
-        pcie_7x_mgt_txn(0) => pcie_7x_mgt_txn(0),
-        pcie_7x_mgt_txp(0) => pcie_7x_mgt_txp(0),
+        pcie_7x_mgt_rxn => pcie_7x_mgt_rxn,
+        pcie_7x_mgt_rxp => pcie_7x_mgt_rxp,
+        pcie_7x_mgt_txn => pcie_7x_mgt_txn,
+        pcie_7x_mgt_txp => pcie_7x_mgt_txp,
+        pcie_perst => pcie_perst,
         pcie_perstn => pcie_perstn,
         pcie_refclk_N => pcie_refclk_N,
         pcie_refclk_P => pcie_refclk_P,
-        --
-        slv_read0(31 downto 0) => slv_read0(31 downto 0),
-        slv_read1(31 downto 0) => slv_read1(31 downto 0),
-        slv_read2(31 downto 0) => slv_read2(31 downto 0),
-        slv_read3(31 downto 0) => slv_read3(31 downto 0),
-        slv_read4  => slv_read4,
-        slv_read5  => slv_read5,
-        slv_read6  => slv_read6,
-        slv_read7  => slv_read7,
-        slv_read8  => slv_read8,
-        slv_read9  => slv_read9,
+        slv_read0 => slv_read0,
+        slv_read1 => slv_read1,
         slv_read10 => slv_read10,
         slv_read11 => slv_read11,
         slv_read12 => slv_read12,
         slv_read13 => slv_read13,
         slv_read14 => slv_read14,
         slv_read15 => slv_read15,
-        --
-        slv_reg0(31 downto 0) => slv_reg0(31 downto 0),
-        slv_reg1(31 downto 0) => slv_reg1(31 downto 0),
-        slv_reg2(31 downto 0) => slv_reg2(31 downto 0),
-        slv_reg3(31 downto 0) => slv_reg3(31 downto 0),
-        slv_reg4  => slv_reg4,
-        slv_reg5  => slv_reg5,
-        slv_reg6  => slv_reg6,
-        slv_reg7  => slv_reg7,
-        slv_reg8  => slv_reg8,
-        slv_reg9  => slv_reg9,
+        slv_read2 => slv_read2,
+        slv_read3 => slv_read3,
+        slv_read4 => slv_read4,
+        slv_read5 => slv_read5,
+        slv_read6 => slv_read6,
+        slv_read7 => slv_read7,
+        slv_read8 => slv_read8,
+        slv_read9 => slv_read9,
+        slv_reg0 => slv_reg0,
+        slv_reg1 => slv_reg1,
         slv_reg10 => slv_reg10,
         slv_reg11 => slv_reg11,
         slv_reg12 => slv_reg12,
         slv_reg13 => slv_reg13,
         slv_reg14 => slv_reg14,
         slv_reg15 => slv_reg15,
-        --
-        axi_clk => axi_clk,
-        axi_reset_n(0) => axi_reset_n);
-
+        slv_reg2 => slv_reg2,
+        slv_reg3 => slv_reg3,
+        slv_reg4 => slv_reg4,
+        slv_reg5 => slv_reg5,
+        slv_reg6 => slv_reg6,
+        slv_reg7 => slv_reg7,
+        slv_reg8 => slv_reg8,
+        slv_reg9 => slv_reg9);
 
     led_flash_proc:process
     begin
